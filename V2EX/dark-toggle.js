@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         v2ex dark toggle
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/gaoyang/tampermonkey-scripts
 // @version      0.1
 // @description  v2ex dark toggle!
 // @author       Leo

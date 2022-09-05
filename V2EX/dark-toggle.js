@@ -2,7 +2,7 @@
 // @name         v2ex dark toggle
 // @namespace    https://github.com/gaoyang/tampermonkey-scripts
 // @version      0.1
-// @description  v2ex dark toggle!
+// @description  v2ex dark toggle! v2ex 夜间模式自动切换
 // @author       Leo
 // @match        https://www.v2ex.com/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=v2ex.com

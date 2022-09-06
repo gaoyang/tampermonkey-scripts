@@ -7,7 +7,7 @@
 // @match        https://github.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant        none
-// @require22      https://raw.githubusercontents.com/gaoyang/tampermonkey-scripts/main/GitHub/github.js
+// @require      https://raw.githubusercontents.com/gaoyang/tampermonkey-scripts/main/GitHub/github.js
 // ==/UserScript==
 
 ;(function () {

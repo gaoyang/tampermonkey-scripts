@@ -1,0 +1,65 @@
+// ==UserScript==
+// @name         青书学堂自动刷课
+// @namespace    https://github.com/gaoyang/tampermonkey-scripts
+// @version      1.0
+// @description  青书学堂自动刷课，没有多余的功能，简单好用。
+// @author       gaoyang
+// @match        https://*.qingshuxuetang.com/*/CourseShow*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=degree.qingshuxuetang.com
+// @run-at       document-end
+// @grant        none
+// @license      MIT
+// ==/UserScript==
+
+;(function () {
+  'use strict'
+
+  const message = document.createElement('div')
+  const urlParams = new URLSearchParams(window.location.search)
+  const currentNodeId = urlParams.get('nodeId')
+  let nextNode
+  let findCoursesTimer
+  let findVideoTimer
+
+  message.style = 'display:inline-block;color:red;font-size:18px;'
+  const playerHeader = document.querySelector('.player-header')
+  playerHeader.parentNode.insertBefore(message, playerHeader)
+
+  if (currentNodeId.includes('jbxx')) {
+    message.innerText = `[自动刷课] ⚠ 只有视频课程才能自动刷课`
+    return
+  }
+
+  const findCourses = () => {
+    const list = document.querySelectorAll('#lessonMenu li a[id]')
+    if (list && list.length > 0) clearInterval(findCoursesTimer)
+    const nodeArray = []
+    list.forEach(item => {
+      if (item.id.includes('jbxx')) return
+      nodeArray.push({
+        id: item.id.split('-')[1],
+        title: item.text
+      })
+    })
+    window.sss = nodeArray
+    nextNode = nodeArray[nodeArray.findIndex(o => o.id === currentNodeId) + 1]
+    if (nextNode) message.innerText = `[自动刷课] 下一节课：${nextNode.title}`
+    else message.innerText = `[自动刷课] ⚠ 目前最后一节课了`
+  }
+  findCoursesTimer = setInterval(findCourses, 1000)
+
+  const findVideo = () => {
+    const video = document.querySelector('video')
+    if (video) clearInterval(findVideoTimer)
+    video.muted = true
+    video.currentTime = 0
+    video.play()
+
+    video.addEventListener('ended', function () {
+      if (!nextNode) return
+      urlParams.set('nodeId', nextNode.id)
+      location.replace(window.location.pathname + '?' + urlParams.toString())
+    })
+  }
+  findVideoTimer = setInterval(findVideo, 1000)
+})()

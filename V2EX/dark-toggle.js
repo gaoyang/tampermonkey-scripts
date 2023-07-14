@@ -1,13 +1,12 @@
 // ==UserScript==
-// @name         v2ex dark toggle
+// @name         v2ex 夜间模式自动切换
 // @namespace    https://github.com/gaoyang/tampermonkey-scripts
 // @version      0.1
-// @description  v2ex dark toggle! v2ex 夜间模式自动切换
+// @description  v2ex 夜间模式自动切换
 // @author       gaoyang
 // @match        https://www.v2ex.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=v2ex.com
 // @grant        none
-// @require      https://raw.githubusercontents.com/gaoyang/tampermonkey-scripts/main/V2EX/dark-toggle.js
 // ==/UserScript==
 
 ;(function () {

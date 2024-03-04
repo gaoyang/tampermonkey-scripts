@@ -49,13 +49,13 @@
   findCoursesTimer = setInterval(findCourses, 1000)
 
   const findVideo = () => {
-    const video = document.querySelector('video')
-    if (video) clearInterval(findVideoTimer)
-    video.muted = true
-    video.currentTime = 0
-    video.play()
+    const player = window.CoursewarePlayer
+    if (player) clearInterval(findVideoTimer)
+    player.videoPlayer.player.muted(true)
+    player.seek(0)
+    player.play()
 
-    video.addEventListener('ended', function () {
+    player.addListener('ended', function () {
       if (!nextNode) return
       urlParams.set('nodeId', nextNode.id)
       location.replace(window.location.pathname + '?' + urlParams.toString())

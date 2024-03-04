@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         青书学堂自动刷课
 // @namespace    https://github.com/gaoyang/tampermonkey-scripts
-// @version      1.0
+// @version      1.1
 // @description  青书学堂自动刷课，没有多余的功能，简单好用。
 // @author       gaoyang
 // @match        https://*.qingshuxuetang.com/*/CourseShow*
